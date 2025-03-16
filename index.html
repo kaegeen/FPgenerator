@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Front Page Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 p-4 text-center">
+        <h1 class="text-white text-2xl font-bold">AI Front Page Generator</h1>
+    </nav>
+
+    <!-- Input Section -->
+    <section class="py-8 flex flex-col items-center">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-lg font-bold mb-2">Enter a topic for your front page:</h2>
+            <input id="topicInput" type="text" placeholder="e.g. Tech News, Sports, Fashion..." class="p-2 text-black w-full rounded-md mb-4">
+            <button onclick="generateFrontPage()" class="bg-blue-500 px-4 py-2 text-white rounded hover:bg-blue-700">Generate</button>
+        </div>
+    </section>
+
+    <!-- Front Page Display -->
+    <section id="frontPage" class="hidden py-8 flex flex-col items-center">
+        <div class="bg-white text-black p-6 rounded-lg shadow-lg w-full max-w-2xl">
+            <h2 id="frontPageTitle" class="text-2xl font-bold mb-4"></h2>
+            <p id="frontPageContent" class="text-gray-700"></p>
+        </div>
+    </section>
+
+    <script>
+        function generateFrontPage() {
+            const topic = document.getElementById("topicInput").value.trim();
+            if (!topic) return;
+            
+            const sampleContent = {
+                "Tech News": "Stay updated with the latest trends in AI, software, and cutting-edge gadgets.",
+                "Sports": "Get the latest updates on football, basketball, and more from around the world!",
+                "Fashion": "Discover the newest styles and trends that are taking the fashion industry by storm!",
+                "Health": "Tips and advice on staying fit, eating well, and living a healthy life."
+            };
+            
+            const title = `Welcome to ${topic}`;
+            const content = sampleContent[topic] || "Explore in-depth insights and the latest news on this topic.";
+            
+            document.getElementById("frontPageTitle").innerText = title;
+            document.getElementById("frontPageContent").innerText = content;
+            document.getElementById("frontPage").classList.remove("hidden");
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-center py-4 text-white mt-8">
+        <p>&copy; 2025 AI Front Page Generator. All rights reserved.</p>
+    </footer>
+</body>
+</html>
